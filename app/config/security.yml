@@ -1,0 +1,38 @@
+security:
+  encoders:
+    AppBundle\Entity\User:
+      id: app.password_encoder
+
+  role_hierarchy:
+    ROLE_USER: []
+    ROLE_ADMIN: [ROLE_USER]
+
+  providers:
+    app_users:
+      entity:
+        class: AppBundle:User
+        property: email
+
+  access_decision_manager:
+    strategy: unanimous
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+      security: false
+
+    main:
+      anonymous: true
+      pattern: ^/
+      form_login:
+        login_path: app_user_login
+        check_path: app_user_check
+        default_target_path: app_employee_index
+      logout:
+        path: app_user_logout
+        target: app_user_login
+
+  access_control:
+    - { path: ^/(login)$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, role: ROLE_USER }
+

@@ -1,0 +1,43 @@
+imports:
+  - { resource: config.yml }
+
+services:
+  validator.mapping.cache.redis: @cache.default
+  doctrine.orm.default_query_cache: @cache.default
+  doctrine.orm.default_metadata_cache: @cache.default
+  doctrine.orm.default_result_cache: @cache.default
+
+framework:
+  validation:
+    cache: cache.default
+  serializer:
+    cache: cache.default
+  session:
+    handler_id: session.handler.redis
+
+monolog:
+  handlers:
+    main:
+      type: fingers_crossed
+      action_level: error
+      handler: all
+
+    # sentry:
+    #   type: raven
+    #   dsn: %sentry_dsn%
+    #   level: notice
+
+    all:
+      type: group
+      members:
+        - nested
+        - console
+        # - sentry
+
+    nested:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.log"
+      level: error
+
+    console:
+      type: console

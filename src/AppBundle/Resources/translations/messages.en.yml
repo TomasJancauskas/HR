@@ -1,0 +1,59 @@
+project_name: "HR system"
+
+user:
+  login:
+    title: "Login"
+    username: "Username"
+    password: "Password"
+    submit: "Login"
+    incorrect_credentials: 'Email or password is incorrect'
+
+  label:
+    password_mismatch: 'Passwords does not match'
+
+vacation:
+  index:
+    title: 'Vacations'
+    new: 'New'
+  label:
+    employee: 'Employee'
+    startsAt: 'Starts at'
+    endsAt: 'Ends at'
+  flash:
+    created: 'Vacation was created successfully'
+  new:
+    title: 'Create vacation'
+title:
+  delete: 'Delete'
+
+  edit: 'Edit'
+employee:
+  index:
+    title: 'Employees'
+    new: 'New'
+  label:
+    firstname: 'First name'
+    lastname: 'Last name'
+    fullname: 'Full name'
+    birthdate: 'Birthdate'
+    job: 'Job title'
+    location: 'Location'
+    remaining_vacations: 'Remaining vacation days'
+    taken_vacations: 'Vacation days taken'
+    joined: 'Joined at'
+  edit:
+    title: 'Edit employee'
+  new:
+    title: 'Create employee'
+  flash:
+    created: 'Employee was created successfully'
+    updated: 'Employee was updated successfully'
+    removed: 'Employee was removed successfully'
+location:
+  index:
+    title: 'Locations'
+  label:
+    title: 'Title'
+    employees: 'Employees'
+button:
+  save: 'Save'

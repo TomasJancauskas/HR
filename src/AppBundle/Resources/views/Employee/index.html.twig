@@ -1,0 +1,56 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>
+    {{ 'employee.index.title'|trans }}
+    <a href="{{ url('app_employee_new') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> {{ 'employee.index.new'|trans }}</a>
+  </h1>
+
+  {% include 'AppBundle::flashes.html.twig' %}
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-users"></i> {{ 'employee.index.title'|trans }}</h3>
+    </div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>{{ sorter_link(employees, 'e.firstname', 'employee.label.fullname'|trans) }}</th>
+          <th>{{ sorter_link(employees, 'e.birthdate', 'employee.label.birthdate'|trans) }}</th>
+          <th>{{ 'employee.label.job'|trans }}</th>
+          <th>{{ 'employee.label.location'|trans }}</th>
+          <th>{{ 'employee.label.joined'|trans }}</th>
+          <th>{{ 'employee.label.remaining_vacations'|trans }}</th>
+          <th>{{ 'employee.label.taken_vacations'|trans }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+          <tr>
+            <td class="col-min">{{ employee.id }}</td>
+            <td>{{ employee.fullname }}</td>
+            <td>{{ employee.birthdate|date }}</td>
+            <td>{{ employee.job }}</td>
+            <td>{{ employee.location }}</td>
+            <td>{{ employee.joinedAt|date }}</td>
+            <td>{{ employee.remainingVacationDays }}</td>
+            <td>{{ employee.usedVacationDays }}</td>
+            <td class="col-min">
+              <a href="{{ url('app_employee_edit', {id: employee.id}) }}" class="btn btn-xs btn-link" data-title="{{ 'title.edit'|trans }}" data-toggle="tooltip">
+                <i class="fa fa-search"></i>
+              </a>
+              <a href="{{ url('app_employee_delete', {id: employee.id}) }}" class="btn btn-xs btn-link js-confirm" data-title="{{ 'title.delete'|trans }}" data-toggle="tooltip">
+                <i class="fa fa-times"></i>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="panel-footer">
+      {{ pagination(employees) }}
+    </div>
+  </div>
+{% endblock %}

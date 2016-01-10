@@ -1,0 +1,40 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>
+    {{ 'vacation.index.title'|trans }}
+    <a href="{{ url('app_vacation_new') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> {{ 'vacation.index.new'|trans }}</a>
+  </h1>
+
+  {% include 'AppBundle::flashes.html.twig' %}
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-users"></i> {{ 'vacation.index.title'|trans }}</h3>
+    </div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>{{ 'vacation.label.employee'|trans }}</th>
+          <th>{{ 'vacation.label.startsAt'|trans }}</th>
+          <th>{{ 'vacation.label.endsAt'|trans }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for vacation in vacations %}
+          <tr>
+            <td class="col-min">{{ vacation.id }}</td>
+            <td>{{ vacation.employee.firstname }} {{ vacation.employee.lastname }}</td>
+            <td>{{ vacation.startsAt|date }}</td>
+            <td>{{ vacation.endsAt|date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="panel-footer">
+      {{ pagination(vacations) }}
+    </div>
+  </div>
+{% endblock %}

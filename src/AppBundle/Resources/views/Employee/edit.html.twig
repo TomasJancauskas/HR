@@ -1,0 +1,14 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{{ 'employee.edit.title'|trans }}</h1>
+
+  <div id="form_body">
+    {{ render(controller('AppBundle:Employee:ajaxEdit', {'employee': employee})) }}
+  </div>
+{% endblock %}
+{% block js %}
+  <script>
+    initAjaxForm();
+  </script>
+{% endblock %}

@@ -1,0 +1,5 @@
+validators:
+  after_join_date: 'Vacation must start after user started working'
+  overlap: 'Dates overlap with previously created vacation'
+  enough_remaining: 'Employee does not have enough remaining vacation days'
+  start_before_end: 'Vacation must start before it ends'

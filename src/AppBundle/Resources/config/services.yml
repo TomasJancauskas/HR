@@ -1,0 +1,12 @@
+services:
+    validator.does_not_overlap:
+        class: AppBundle\Validator\Constraints\DoesNotOverlapValidator
+        arguments: [@em]
+        tags:
+            - { name: validator.constraint_validator, alias: does_not_overlap_validator  }
+
+    form.type.datalist_type:
+        class: AppBundle\Form\DatalistType
+        arguments: [@doctrine]
+        tags:
+            -  { name: form.type, alias: datalist }

@@ -1,0 +1,6 @@
+services:
+  twig.extension.time_ago:
+    class: AppBundle\Twig\TimeExtension
+    arguments: [@translator]
+    tags:
+      - { name: twig.extension }

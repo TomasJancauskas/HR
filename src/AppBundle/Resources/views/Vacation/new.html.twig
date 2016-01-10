@@ -1,0 +1,14 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{{ 'vacation.new.title'|trans }}</h1>
+
+  <div id="form_body">
+    {{ render(controller('AppBundle:Vacation:create')) }}
+  </div>
+{% endblock %}
+{% block js %}
+  <script>
+    initAjaxForm();
+  </script>
+{% endblock %}

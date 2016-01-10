@@ -1,0 +1,13 @@
+# vi: set ft=yaml ts=2 sw=2 sts=2 :
+parameters:
+  asset_version: ~
+
+  database_driver: pdo_mysql
+  database_host: 127.0.0.1
+  database_port: ~
+  database_name: symfony2
+  database_user: root
+  database_password: ~
+
+  locale: en
+  secret: ThisTokenIsNotSoSecretChangeItOnProduction

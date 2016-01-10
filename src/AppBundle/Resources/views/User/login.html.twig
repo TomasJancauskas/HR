@@ -1,0 +1,41 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% set title = 'user.login.title'|trans %}
+
+{% block content %}
+
+{% include 'AppBundle::flashes.html.twig' %}
+{% if error %}
+  <div class="alert alert-danger">
+      <span class="fa fa-exclamation-circle"></span> {{ error }}
+  </div>
+{% endif %}
+
+<div class="well content">
+
+  <div class="page-header">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <form action="{{ path("app_user_check") }}" method="post" class="form-horizontal" novalidate>
+    <input type="hidden" name="_csrf_user_login" value="{{ csrf_token('_app_user_login') }}" />
+    <div class="form-group">
+      <label for="username" class="col-sm-3 control-label required">{{ 'user.login.username'|trans }}</label>
+      <div class="col-sm-7">
+        <input type="text" id="username" name="_username" value="{{ lastUsername }}" class="form-control" placeholder="{{ 'user.login.username'|trans }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-sm-3 control-label required">{{ 'user.login.password'|trans }}</label>
+      <div class="col-sm-7">
+        <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'user.login.password'|trans }}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-4">
+        <button type="submit" name="_submit" id="_submit" class="btn btn-primary btn-lg">{{ 'user.login.submit'|trans }}</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

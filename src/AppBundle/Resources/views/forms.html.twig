@@ -1,0 +1,16 @@
+{% extends "bootstrap_3_horizontal_layout.html.twig" %}
+
+{# adds novalidate to prevent html5 validation#}
+{% block form_start -%}
+  {% set attr = attr|merge({novalidate: null}) %}
+  {{- parent() -}}
+{%- endblock form_start %}
+
+{% block datalist_widget %}
+  <input list="{{ id }}list" {{ block('widget_attributes') }} value="{{ value }}" class="form-control">
+  <datalist id="{{ id }}list">
+    {% for suggestion in suggestions %}
+      <option value="{{ suggestion }}"></option>
+    {% endfor %}
+  </datalist>
+{% endblock %}
