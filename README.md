@@ -31,6 +31,11 @@ Reload application database..
     app/console doctrine:migrations:migrate
     app/console app:fixtures
 
+User will be created:
+
+    email: user@hr.lt
+    password: S3cretpassword
+
 Start serving application in **dev** environment:
 
     app/console server:run
